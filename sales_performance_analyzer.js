@@ -60,3 +60,17 @@ let salesData = [
 {name: "Coal", sales: 200},
 ];
 console.log(findTopAndBottomPerformers(salesData));
+
+// Task 4 - Combine Functions to Generate a Performance Report
+
+function generatePerformanceReport (data) {
+    const report = data.map((salesGuy) => ({
+        name: salesGuy.name,
+        avgSales: calculateAverageSales(salesGuy.sales),
+        rating: determinePerformanceRating(calculateAverageSales(salesGuy.sales)),
+    }));
+
+    const topPerformer = findTopAndBottomPerformers(data).topPerformer.name;
+    const bottomPerformer = findTopAndBottomPerformers(data).bottomPerformer.name;
+
+    return {report, topPerformer, bottomPerformer};
